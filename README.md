@@ -8,3 +8,4 @@
 4. Handling Query Error
 5. React Query Devtools
 6. Query Cache
+7. Stale Time
