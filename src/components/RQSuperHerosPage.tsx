@@ -8,7 +8,7 @@ const fetchSuperHeroes = () => {
 
 const RQSuperHeroesPage = () => {
   //구조분할로 필요한것만 가져옴(https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)
-  const { isLoading, data, isError, error, isFetching } = useQuery(
+  const { isLoading, data, isError, error, isFetching,refetch } = useQuery(
     "super-heroes",
     fetchSuperHeroes,
     {
@@ -16,26 +16,27 @@ const RQSuperHeroesPage = () => {
       //staleTime:30000,
       //refetchOnMount:true, 
       //refetchOnWindowFocus:true,
-      refetchInterval:2000,//default:false,숫자:몇초간 refetch 된다,
-      //만약 windowfocus됬지 않을 때에도 poll하고 싶다
-      refetchIntervalInBackground:true,//default:false,true:focus되지 않을 때도 폴할것이다.
+      //refetchInterval:2000,
+      //refetchIntervalInBackground:true,
+      enabled:false,//fetching disabled.refetchOnMount disabled 한거임
+
 
     }
   );
 
   console.log({ isLoading, isFetching });
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <h2>Loading...</h2>;
   }
 
   if (isError) {
     return <h2>{(error as Error).message}</h2>;
   }
-
   return (
     <>
       <h2>RQSuperHeroesPage Component</h2>
+      <button onClick={()=>{refetch()}}>Fetch Heroes</button>
       {data?.data.map((hero: Tdata) => {
         return <div key={hero.name}>{hero.name}</div>;
       })}
