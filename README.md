@@ -2,5 +2,6 @@
 
 ---
 
-1.Introduction
-2.Project Setup
+1. Introduction
+2. Project Setup
+3. Fetching Data with useQuery

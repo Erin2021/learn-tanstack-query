@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-type Tdata={
+export type Tdata={
   id:number;
   name:string;
   alterego:string;
