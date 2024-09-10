@@ -1,10 +1,4 @@
-import { useQuery } from "react-query";
-import axios from "axios";
-import { Tdata } from "./SuperHeroesPage";
-
-const fetchSuperHeroes = () => {
-  return axios.get("http://localhost:4000/superheroes");
-};
+import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
 
 const RQSuperHeroesPage = () => {
   const onSuccess = (data: any) => {
@@ -16,28 +10,8 @@ const RQSuperHeroesPage = () => {
   };
 
   //구조분할로 필요한것만 가져옴(https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)
-  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
-    "super-heroes",
-    fetchSuperHeroes,
-    {
-      //cacheTime:5000,
-      //staleTime:30000,
-      //refetchOnMount:true,
-      //refetchOnWindowFocus:true,
-      //refetchInterval:2000,
-      //refetchIntervalInBackground:true,
-      //enabled:false,//fetching disabled.refetchOnMount disabled 한거임
-
-      onSuccess,
-      onError,
-      select: (data) => {
-        //data에서 원하는 것을 뽑는 것-여기서 추출하면 이 data를 사용하는 것이다.
-        const superHeroNames = data.data.map((hero: Tdata) => hero.name);
-        return superHeroNames;
-      },
-    }
-  );
-
+  const { isLoading, data, isError, error, isFetching, refetch } =
+    useSuperHeroesData(onSuccess, onError);
   console.log({ isLoading, isFetching });
 
   if (isLoading || isFetching) {
