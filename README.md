@@ -5,3 +5,4 @@
 1. Introduction
 2. Project Setup
 3. Fetching Data with useQuery
+4. Handling Query Error

@@ -8,10 +8,17 @@ const fetchSuperHeroes = () => {
 
 const RQSuperHeroesPage = () => {
   //구조분할로 필요한것만 가져옴(https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)
-  const { isLoading, data } = useQuery("super-heroes", fetchSuperHeroes);
+  const { isLoading, data, isError, error } = useQuery(
+    "super-heroes",
+    fetchSuperHeroes
+  );
 
   if (isLoading) {
     return <h2>Loading...</h2>;
+  }
+
+  if (isError) {
+    return <h2>{(error as Error).message}</h2>;
   }
 
   return (
@@ -26,3 +33,4 @@ const RQSuperHeroesPage = () => {
 export default RQSuperHeroesPage;
 
 //data?.data : data값이 useQuery로 불려왔는데, 데이터를 사용하려면 data에 들어가야 사용할 수 있음.
+//에러판정까지 시간이 걸리는이유:에러나면 자동으로 재도전을 하거든: error as Error : 에러가 에러타입일때 작동하는거
