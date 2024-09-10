@@ -10,3 +10,4 @@
 6. Query Cache
 7. Stale Time
 8. Refetch Defaults
+9. Polling

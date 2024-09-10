@@ -12,8 +12,14 @@ const RQSuperHeroesPage = () => {
     "super-heroes",
     fetchSuperHeroes,
     {
-      refetchOnMount:true,//refetchOnMount:화면에 컴포넌트가 나타날때마다 데이터 가져올지. true:데이타가 stale일 경우 refetch가 진행된다.false:refetch가 안된다.'always': 데이터가 stale이던 아니던 refetch된다.
-      refetchOnWindowFocus:true,//refetchOnMount보다 약간 더 중요함.ui async with remoted data(사용자 인터페이스가 원격 데이터를 비동기적으로 처리한다).true: 윈도우가 집중되면 refetch가 일어남.false,'always'
+      //cacheTime:5000,
+      //staleTime:30000,
+      //refetchOnMount:true, 
+      //refetchOnWindowFocus:true,
+      refetchInterval:2000,//default:false,숫자:몇초간 refetch 된다,
+      //만약 windowfocus됬지 않을 때에도 poll하고 싶다
+      refetchIntervalInBackground:true,//default:false,true:focus되지 않을 때도 폴할것이다.
+
     }
   );
 
