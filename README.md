@@ -6,3 +6,4 @@
 2. Project Setup
 3. Fetching Data with useQuery
 4. Handling Query Error
+5. React Query Devtools

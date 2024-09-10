@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import HomePage from "./components/HomePage";
 import SuperHeroesPage from "./components/SuperHeroesPage";
 import RQSuperHeroesPage from "./components/RQSuperHerosPage";
@@ -32,6 +33,7 @@ const App = () => {
           </Routes>
         </div>
       </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right"/>
     </QueryClientProvider>
   );
 };
