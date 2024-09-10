@@ -9,3 +9,4 @@
 5. React Query Devtools
 6. Query Cache
 7. Stale Time
+8. Refetch Defaults
