@@ -16,4 +16,5 @@
 12. Data Transformation
 13. Custom Query Hook
 14. Query by Id
+15. Parallel Queries
 

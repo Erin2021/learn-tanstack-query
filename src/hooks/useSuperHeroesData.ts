@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import { Tdata } from "../components/SuperHeroesPage";
 import axios from "axios";
 
 const fetchSuperHeroes = () => {
