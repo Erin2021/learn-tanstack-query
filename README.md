@@ -17,4 +17,5 @@
 13. Custom Query Hook
 14. Query by Id
 15. Parallel Queries
+16. Dynamic Parallel Queries
 
